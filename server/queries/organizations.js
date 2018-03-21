@@ -17,21 +17,21 @@ function addOrganization(name, slug, status=true, image_url) {
   });
 }
 
-function deleteOrganization(name) {
+function deleteOrganization(slug) {
   return Organizations()
-    .where({ organization_name: name })
+    .where({ slug_id: slug })
       .del()
 }
 
-function deactivateOrganization(name) {
+function deactivateOrganization(slug) {
   return Organizations()
-    .where({ organization_name: name})
+    .where({ slug_id: slug })
       .update({ active: false })
 }
 
-function activateOrganization(name) {
+function activateOrganization(slug) {
   return Organizations()
-    .where({ organization_name: name})
+    .where({ slug_id: slug })
       .update({ active: true })
 }
 

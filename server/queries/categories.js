@@ -31,8 +31,8 @@ function getOrganizationCategory(name, org_id) {
 function deleteOrganizationCategory(name, org_id) {
   return Categories()
           .where({
-            organization_id: org_id,
-            category_name: name
+            category_name: name,
+            organization_id: org_id
           })
             .del()
 }
@@ -76,5 +76,9 @@ function deactivateOrganizationCategory(name, org_id) {
 module.exports = {
   getOrganizationCategories: getOrganizationCategories,
   addOrganizationCategory: addOrganizationCategory,
-  getOrganizationCategory: getOrganizationCategory
+  getOrganizationCategory: getOrganizationCategory,
+  deleteOrganizationCategory: deleteOrganizationCategory,
+  deactivateOrganizationCategory: deactivateOrganizationCategory,
+  activateOrganizationCategory: activateOrganizationCategory,
+  updateOrganizationCategory: updateOrganizationCategory
 };

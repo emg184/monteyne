@@ -55,6 +55,7 @@ passport.use(strategy);
 app.get("/", function(req, res) {
   res.json({message: "Express is up and Running"});
 });
+
 app.post("/login", function(req, res) {
   if(req.body.name && req.body.password){
     var name = req.body.name;
@@ -72,9 +73,11 @@ app.post("/login", function(req, res) {
     res.status(401).json({message:"passwords did not match"});
   }
 });
+
 app.get("/secret", passport.authenticate('jwt', { session: false }), function(req, res){
   res.json("Success! You can not see this without a token");
 });
+
 app.get('/users', function(req, res, next) {
   queries.getAllUsers()
   .then(function(users) {
