@@ -14,6 +14,18 @@ module.exports = app => {
           next(error);
         });
   });
+  app.get('/organizations/:slug_id/:category_name', function(req, res, next) {
+    getOrg.getOrganizationId(req.params.slug_id)
+      .then(function(result) {
+        return queries.getOrganizationCategory(req.params.category_name, result[0].organization_id)
+      })
+        .then(function(categories) {
+          res.status(200).json(categories)
+        })
+        .catch(function(error) {
+          next(error);
+        });
+  });
   app.post('/organizations/:slug_id/categories', function(req, res, next) {
     getOrg.getOrganizationId(req.params.slug_id)
         .then(function(result) {

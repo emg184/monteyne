@@ -7,3 +7,8 @@ TODO
 6. Add user based queries
 7. Add user based routes
 8. Update Individual Category
+
+
+1. Fix Delete on Categories
+2. Fix Update on all Items
+3. Make information so that all products and category are sent

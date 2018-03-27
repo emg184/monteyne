@@ -2,6 +2,7 @@ var express = require("express");
 var bodyParser = require("body-parser");
 var _ = require("lodash");
 var jwt = require("jsonwebtoken");
+var cors = require('cors')
 
 var passport = require("passport");
 var passportJWT = require("passport-jwt");
@@ -11,6 +12,7 @@ var JwtStrategy = passportJWT.Strategy;
 
 
 var app = express();
+app.use(cors())
 app.use(passport.initialize());
 
 
