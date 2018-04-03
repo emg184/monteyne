@@ -147,6 +147,24 @@ function addImage(name, prod_id, status=true, url) {
 }
 
 
+function whereInProducts(catArray) {
+  //return Products()
+          //.whereIn('category_id', catArray)
+  return knex.select().from('products')
+          .whereIn('category_id', catArray)
+  /*
+  return Promise.all(catArray.map(
+    function(obj) {
+      return getProduct(obj.category_id)
+    })
+      .then(function(prods) {
+        prods[cats]
+      })
+  );
+  */
+}
+
+
 
 module.exports = {
   getAllProducts: getAllProducts,
@@ -163,5 +181,6 @@ module.exports = {
   activateImage: activateImage,
   deactivateImage: deactivateImage,
   addProduct: addProduct,
-  addImage: addImage
+  addImage: addImage,
+  whereInProducts: whereInProducts
 };

@@ -3,6 +3,7 @@ const queries = require("../queries/products.js");
 module.exports = app => {
 
   app.get("/organizations/:slug_id/:category_id", function (req, res, next) {
+      console.log("Here")
       queries.getAllProducts(req.params.category_id)
           .then(function (result) {
               return Promise.all(result.map(function (obj) {

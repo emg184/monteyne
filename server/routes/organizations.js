@@ -64,5 +64,13 @@ module.exports = app => {
         next(error);
       });
   });
-
+  app.get('/organizations/:slug_id/all', function(req, res, next) {
+    queries.getAllOrganizationData(req.params.slug_id)
+      .then(function(organization) {
+        res.status(200).json(organization)
+      })
+      .catch(function(error) {
+        next(error);
+      });
+  });
 };
