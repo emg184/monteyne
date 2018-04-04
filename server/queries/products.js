@@ -73,6 +73,7 @@ function updateProduct(prod_id, name, category, status=true, desc) {
             })
 }
 
+
 function updateImage(id, name, prod_id, status=true, url) {
   return Images()
           .where({

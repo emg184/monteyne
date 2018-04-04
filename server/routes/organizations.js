@@ -47,7 +47,7 @@ module.exports = app => {
       });
   })
   app.put('/organizations/:slug_id', function(req, res, next) {
-    queries.updateOrganization(req.body.name, req.body.slug_id, req.body.activate, req.body.image)
+    queries.updateOrganization(req.body.id, req.body.name, req.body.slug_id, req.body.activate, req.body.image)
       .then(function() {
         res.status(200).json({ message:"updated" });
       })

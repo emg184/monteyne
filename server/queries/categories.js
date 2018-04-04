@@ -37,11 +37,25 @@ function deleteOrganizationCategory(name, org_id) {
             .del()
 }
 
+/*
 function updateOrganizationCategory(name, org_id, image_url, status) {
   return Categories()
           .where({
             organization_id: org_id,
             category_name: name
+          })
+            .update({
+              category_name: name,
+              organization_id: org_id,
+              active: status,
+              image: image_url
+            })
+}
+*/
+function updateOrganizationCategory(cat_id, name, org_id, image_url, status) {
+  return Categories()
+          .where({
+            cat_id
           })
             .update({
               category_name: name,
