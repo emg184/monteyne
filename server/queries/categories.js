@@ -11,13 +11,14 @@ function getOrganizationCategories(organization_id) {
           });
 }
 
-function addOrganizationCategory(name, org_id, status=true, image_url) {
+function addOrganizationCategory(name, org_id, status=true, image_url, desc) {
   return Categories()
           .insert({
             category_name: name,
             organization_id: org_id,
             active: status,
-            image: image_url
+            image: image_url,
+            description: desc
           });
 }
 
@@ -52,16 +53,17 @@ function updateOrganizationCategory(name, org_id, image_url, status) {
             })
 }
 */
-function updateOrganizationCategory(cat_id, name, org_id, image_url, status) {
+function updateOrganizationCategory(cat_id, name, org_id, image_url, status=true, desc) {
   return Categories()
           .where({
-            cat_id
+            category_id: cat_id
           })
             .update({
               category_name: name,
               organization_id: org_id,
               active: status,
-              image: image_url
+              image: image_url,
+              description: desc
             })
 }
 

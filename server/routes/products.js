@@ -2,8 +2,7 @@ const queries = require("../queries/products.js");
 
 module.exports = app => {
 
-  app.get("/organizations/:slug_id/:category_id", function (req, res, next) {
-      console.log("Here")
+  app.get("/organizations/:slug_id/categories/:category_id", function (req, res, next) {
       queries.getAllProducts(req.params.category_id)
           .then(function (result) {
               return Promise.all(result.map(function (obj) {
@@ -39,7 +38,7 @@ module.exports = app => {
   });
   app.post("/organizations/:slug_id/:category_id", function (req, res, next) {
 //add product
-    queries.addProduct(req.body.name, req.params.category_id, req.body.status=true, req.body.desc)
+    queries.addProduct(req.body.name, req.params.category_id, req.body.status=true, req.body.desc, req.body.price)
       .then(function () {
               res.status(200).json({message: "product added"})
       })
@@ -59,7 +58,7 @@ module.exports = app => {
   });
   app.put("/organizations/:slug_id/:category_id/:product_id", function (req, res, next) {
 //update product
-    queries.updateProduct(req.params.product_id, req.body.name, req.params.category_id, req.body.status=true, req.body.desc)
+    queries.updateProduct(req.params.product_id, req.body.name, req.params.category_id, req.body.status=true, req.body.desc, req.body.price)
       .then(function () {
               res.status(200).json({message: "product updated"})
       })

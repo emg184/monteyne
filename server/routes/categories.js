@@ -29,7 +29,7 @@ module.exports = app => {
   app.post('/organizations/:slug_id/categories', function(req, res, next) {
     getOrg.getOrganizationId(req.params.slug_id)
         .then(function(result) {
-            return queries.addOrganizationCategory(req.body.name, result[0].organization_id , req.body.status, req.body.image)
+            return queries.addOrganizationCategory(req.body.name, result[0].organization_id , req.body.status, req.body.image, req.body.description)
         })
           .then(function(categories) {
             res.status(200).json(categories)
@@ -53,7 +53,7 @@ module.exports = app => {
   app.put('/organizations/:slug_id/categories', function(req, res, next) {
   getOrg.getOrganizationId(req.params.slug_id)
       .then(function(result) {
-          return queries.updateOrganizationCategory(req.body.id, req.body.name, result[0].organization_id , req.body.status, req.body.image)
+          return queries.updateOrganizationCategory(req.body.id, req.body.name, result[0].organization_id , req.body.status, req.body.image, req.body.description)
       })
         .then(function(categories) {
           res.status(200).json(categories)
