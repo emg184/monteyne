@@ -38,7 +38,8 @@ module.exports = app => {
   });
   app.post("/organizations/:slug_id/:category_id", function (req, res, next) {
 //add product
-    queries.addProduct(req.body.name, req.params.category_id, req.body.status=true, req.body.desc, req.body.price)
+    queries.addProduct(req.body.name, req.params.category_id, req.body.status=true, req.body.desc, req.body.price,
+req.body.color, req.body.sizes, req.body.custom_fields)
       .then(function () {
               res.status(200).json({message: "product added"})
       })
@@ -58,7 +59,8 @@ module.exports = app => {
   });
   app.put("/organizations/:slug_id/:category_id/:product_id", function (req, res, next) {
 //update product
-    queries.updateProduct(req.params.product_id, req.body.name, req.params.category_id, req.body.status=true, req.body.desc, req.body.price)
+    queries.updateProduct(req.params.product_id, req.body.name, req.params.category_id, req.body.status=true, req.body.desc, req.body.price,
+req.body.color, req.body.sizes, req.body.custom_fields)
       .then(function () {
               res.status(200).json({message: "product updated"})
       })
@@ -132,6 +134,22 @@ module.exports = app => {
         .then(function () {
                 res.status(200).json({message: "product deleted"})
         })
+        .catch(function (error) {
+            next(error);
+        });
+  })
+  app.get("/product/:product_id", function(req, res, next) {
+    queries.getProduct(req.params.product_id)
+        .then(function (result)  {
+            return queries.getProductImages(result[0].product_id)
+              .then(function(images) {
+                result[0]["images"] = images;
+                return result
+              });
+        })
+            .then(function (products) {
+                res.status(200).json(products)
+            })
         .catch(function (error) {
             next(error);
         });

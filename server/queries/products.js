@@ -60,7 +60,7 @@ function deleteImage(image_id) {
               .del()
 }
 
-function updateProduct(prod_id, name, category, status=true, desc, price) {
+function updateProduct(prod_id, name, category, status=true, desc, price, color='', size='', customs='') {
   return Products()
           .where({
             'product_id': prod_id
@@ -70,7 +70,10 @@ function updateProduct(prod_id, name, category, status=true, desc, price) {
               'category_id': category,
               'active': status,
               'description': desc,
-              'price': price
+              'price': price,
+              'colors': color,
+              'sizes': size,
+              'custom_fields': customs
             })
 }
 
@@ -128,14 +131,17 @@ function deactivateImage(id) {
             })
 }
 
-function addProduct(name, category, status=true, desc, price) {
+function addProduct(name, category, status=true, desc, price, color='', size='', customs='') {
   return Products()
           .insert({
             'product_name': name,
             'category_id': category,
             'active': status,
             'description': desc,
-            'price': price
+            'price': price,
+            'colors': color,
+            'sizes': size,
+            'custom_fields': customs
           })
 }
 
