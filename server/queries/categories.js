@@ -94,6 +94,7 @@ function deactivateOrganizationCategory(name, org_id) {
 }
 
 module.exports = {
+  Categories: Categories,
   getOrganizationCategories: getOrganizationCategories,
   addOrganizationCategory: addOrganizationCategory,
   getOrganizationCategory: getOrganizationCategory,

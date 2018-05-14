@@ -12,7 +12,7 @@ module.exports = app => {
   });
   app.post('/organizations', function(req, res, next) {
     queries.addOrganization(req.body.name, req.body.slug_id, req.body.active,
-req.body.image, req.body.primary, req.body.secondary, red.body.head, req.body.foot)
+req.body.image, req.body.primary, req.body.secondary, req.body.head, req.body.foot)
       .then(function() {
         res.status(200).json({message:"inserted"});
       })
@@ -49,7 +49,7 @@ req.body.image, req.body.primary, req.body.secondary, red.body.head, req.body.fo
   })
   app.put('/organizations/:slug_id', function(req, res, next) {
     queries.updateOrganization(req.body.id, req.body.name, req.body.slug_id, req.body.activate,
-req.body.image, req.body.primary, req.body.secondary, red.body.head, req.body.foot)
+req.body.image, req.body.primary, req.body.secondary, req.body.head, req.body.foot)
       .then(function() {
         res.status(200).json({ message:"updated" });
       })

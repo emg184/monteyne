@@ -86,4 +86,13 @@ module.exports = app => {
               next(error);
             });
   });
+  app.get('/categories/all', function(req, res, next) {
+    queries.Categories()
+        .then(function(categories) {
+          res.status(200).json(categories)
+        })
+        .catch(function(error) {
+          next(error);
+        });
+  });
 };

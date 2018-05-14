@@ -176,6 +176,7 @@ function whereInProducts(catArray) {
 
 
 module.exports = {
+  Products: Products,
   getAllProducts: getAllProducts,
   getAllProductsImages: getAllProductsImages,
   getProductImages: getProductImages,

@@ -1,3 +1,7 @@
 module.exports = {
-  secret: 'asdfasdfasdfasdfasdfadffasdfasdfasdfasdfa'
+  secret: 'asdfasdfasdfasdfasdfadffasdfasdfasdfasdfa',
+  email: 'customapparelapi@gmail.com',
+  ULTRASECRETPASS: 'tbegcview',
+  accessKeyId: 'AKIAJSZTSUD2QTGR772Q',
+  secretAccessKey: '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'
 }

@@ -11,7 +11,7 @@ function getAllOrganizations() {
   return Organizations().select().where({ active: true });
 }
 
-function addOrganization(name, slug, status=true, image_url='', primary='', secondary='', head='', foot='') {
+function addOrganization(name, slug, status=true, image_url, primary, secondary, head='', foot='') {
   return Organizations().insert({
     organization_name: name,
     slug_id: slug,
@@ -79,7 +79,7 @@ function getAllOrganizationData(slug_id) {
               result.push(catCollection)
               return result
             })
-              .then(function (catArray) {
+              .then(function (catArray) {//need all organization data
                 var dbPromise = prodQueries.whereInProducts(catArray[catArray.length -1])
                 var arrPromise = catArray.slice(0, catArray.length - 1)
                 return Promise.all([dbPromise, arrPromise]).then(function(values) {
